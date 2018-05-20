@@ -44,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
                 f.setAction("cherry.call");
                 f.setPackage("beginner.wakaba.cherry31");
                 f.putExtra("maid",sm.getSelectedItem().toString());
+                //브로드캐스트 리시버는 기본적으로 딜레이가 존재하는데 이 문장은 우선 순위를 부여하여 딜레이를 없애준다.
                 f.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
 
                 String fm = em.getText().toString();
-                if (fm!=""){
+                if (!fm.isEmpty()){
                     f.putExtra("menu",fm);
                 }else{
                     f.putExtra("menu","카푸치노");
                 }
 
                 String fq = eq.getText().toString();
-                if (fq!=""){
+                if (!fq.isEmpty()){
                     f.putExtra("quantity",fq);
                 }else{
                     f.putExtra("quantity","1");
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newmaid = en.getText().toString();
-                if (newmaid!=""){
+                if (!newmaid.isEmpty()){
                     Intent c = new Intent();
                     c.setAction("cherry.contract");
                     c.setPackage("beginner.wakaba.cherry31");
